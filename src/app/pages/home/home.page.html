@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-toolbar class="sanitas-color">
+    <ion-title class="ion-padding-vertical animated fadeIn slow" color="light">Sanitas Test App</ion-title>
+    <ion-searchbar [(ngModel)]="searchData" (ionChange)="onSearch()" [disabled]="!allDataCharged" color="light" placeholder="Search id or text" class="ion-margin-bottom"></ion-searchbar> 
+  </ion-toolbar>
+
+  <img src="../../../assets/wave.svg" alt="wave">
+  
+  <div class="charging-centered" *ngIf="allDataCharged.length === 0">
+    <ion-spinner name="lines" color="primary"></ion-spinner>
+    <p>Please await...</p>
+  </div>
+  
+  <ion-list class="ion-no-padding" *ngIf="allDataCharged.length>0">
+    <ion-list-header class="animated fadeIn">{{filterData.length === 0 && searchData !=='' ? 'No data result' : 'Results list'}}</ion-list-header>
+    
+    <!-- Optimización del renderizado del DOM -->
+    <ion-virtual-scroll [items]="filterData">
+      <ion-item *virtualItem="let item">
+        <ion-avatar>
+          <img [src]="item.photo" [alt]="item.id">
+        </ion-avatar>
+        <ion-label class="ion-padding-horizontal">{{item.id}}. {{item.text}}</ion-label>
+      </ion-item>
+    </ion-virtual-scroll>
+  </ion-list> 
+
+</ion-content>

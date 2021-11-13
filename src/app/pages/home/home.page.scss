@@ -1,0 +1,22 @@
+ion-content {
+    img[alt="wave"] {
+        position:relative;
+        bottom:1px;
+        transform: rotate(180deg);
+    }
+
+    ion-list {
+        position: relative;
+        bottom: 8px;
+
+        ion-list-header {
+            color: var(--ion-color-sanitas);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        ion-label {
+           color: var(--ion-color-dark);
+        }
+    }
+}
